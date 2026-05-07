@@ -1,4 +1,4 @@
-package com.example.tarifas.Model;
+package com.example.tarifas.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 
 
 @Getter
@@ -28,4 +29,7 @@ public class CategoriaConsumo {
     @Enumerated(EnumType.STRING)
     @Column(name = "categoria", nullable = false)
     private Categoria categoria;
+
+    @OneToMany(mappedBy = "categoriaConsumo", cascade = CascadeType.ALL)
+    private List<FaixaConsumo> faixas;
 }

@@ -1,4 +1,4 @@
-package com.example.tarifas.Model;
+package com.example.tarifas.model;
 
     public enum Categoria {
         COMERCIAL,

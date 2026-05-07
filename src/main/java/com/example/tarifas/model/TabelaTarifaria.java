@@ -1,4 +1,4 @@
-package com.example.tarifas.Model;
+package com.example.tarifas.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -32,5 +33,8 @@ public class TabelaTarifaria {
 
     @Column(name = "status", nullable = false)
     private boolean ativo = true;
+
+    @OneToMany(mappedBy = "tabelaTarifaria", cascade = CascadeType.ALL)
+    private List<CategoriaConsumo> categorias;
 
 }

@@ -1,4 +1,4 @@
-package com.example.tarifas.Model;
+package com.example.tarifas.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -27,7 +27,7 @@ public class FaixaConsumo {
     private Integer inicio;
 
     @Column(name = "fim", nullable = false)
-    @NotNull(message = "O valor inicial é obrigatório")
+    @NotNull(message = "O valor final é obrigatório")
     private Integer fim;
 
     @Column(name = "valor_unitario", nullable = false)
@@ -37,4 +37,6 @@ public class FaixaConsumo {
     @ManyToOne
     @JoinColumn(name = "categoria_consumo_id", nullable = false)
     private CategoriaConsumo categoriaConsumo;
+
+
 }
