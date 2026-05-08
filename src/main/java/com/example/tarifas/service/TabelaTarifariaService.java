@@ -125,7 +125,7 @@ public class TabelaTarifariaService {
                 if (atual.getInicio() <= anterior.getFim()) {
                     throw new RuntimeException("Existem faixas sobrepostas");
                 }
-
+                // A próxima faixa deve começar após o fim da anterior.
                 if (atual.getInicio() != anterior.getFim() + 1) {
                     throw new RuntimeException("Existem buracos entre as faixas");
                 }

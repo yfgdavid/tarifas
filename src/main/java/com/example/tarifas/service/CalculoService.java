@@ -39,7 +39,7 @@ public class CalculoService {
         if (tabelasAtivas.isEmpty()) {
             throw new RuntimeException("Nenhuma tabela tarifária ativa encontrada");
         }
-
+        //entre as tabelas ativas, usa a de vigência mais recente.
         TabelaTarifaria tabelaAtiva = tabelasAtivas.stream()
                 .max(Comparator.comparing(TabelaTarifaria::getDataVigencia))
                 .orElseThrow(() -> new RuntimeException("Nenhuma tabela tarifária ativa encontrada"));
@@ -59,6 +59,7 @@ public class CalculoService {
         BigDecimal valorTotal = BigDecimal.ZERO;
         int consumoRestante = request.getConsumo();
 
+        //cálculo progressivo: cada faixa cobra apenas a parcela do consumo que cabe nela.
         for (FaixaConsumo faixa : faixasOrdenadas) {
             if (consumoRestante <= 0) {
                 break;
