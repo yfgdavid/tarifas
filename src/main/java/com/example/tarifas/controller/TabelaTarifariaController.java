@@ -34,6 +34,12 @@ public class TabelaTarifariaController {
         return ResponseEntity.ok(tabelas);
     }
 
+    @GetMapping("/ativas")
+    public ResponseEntity<List<TabelaTarifariaResponseDTO>> listarTabelasAtivas() {
+        List<TabelaTarifariaResponseDTO> tabelasAtivas = tabelaTarifariaService.buscarTabelasAtivas();
+        return ResponseEntity.ok(tabelasAtivas);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirTabela(@PathVariable Long id) {
         tabelaTarifariaService.excluirTabela(id);

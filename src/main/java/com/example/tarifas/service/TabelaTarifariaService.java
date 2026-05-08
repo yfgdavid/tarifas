@@ -50,6 +50,14 @@ public class TabelaTarifariaService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
+    public List<TabelaTarifariaResponseDTO> buscarTabelasAtivas() {
+        return tabelaTarifariaRepository.findByAtivoTrue()
+                .stream()
+                .map(TabelaTarifariaResponseDTO::fromModel)
+                .toList();
+    }
+
     public void excluirTabela(Long id) {
         TabelaTarifaria tabela = tabelaTarifariaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Tabela tarifária não encontrada"));
