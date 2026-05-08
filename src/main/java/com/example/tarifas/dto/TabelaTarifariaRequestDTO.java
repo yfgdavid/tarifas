@@ -1,5 +1,6 @@
 package com.example.tarifas.dto;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TabelaTarifariaRequestDTO {
-    @NotNull(message = "O nome é obrigatório")
+    @NotBlank(message = "O nome é obrigatório")
     private String nome;
 
     @NotNull(message = "A data de vigência é obrigatória")

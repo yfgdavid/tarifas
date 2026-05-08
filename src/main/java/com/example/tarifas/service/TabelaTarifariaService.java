@@ -9,6 +9,7 @@ import com.example.tarifas.model.FaixaConsumo;
 import com.example.tarifas.model.TabelaTarifaria;
 import com.example.tarifas.repository.TabelaTarifariaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Comparator;
 import java.util.List;
@@ -41,6 +42,7 @@ public class TabelaTarifariaService {
         return TabelaTarifariaResponseDTO.fromModel(salva);
     }
 
+    @Transactional(readOnly = true)
     public List<TabelaTarifariaResponseDTO> buscarTabelas() {
         return tabelaTarifariaRepository.findAll()
                 .stream()
