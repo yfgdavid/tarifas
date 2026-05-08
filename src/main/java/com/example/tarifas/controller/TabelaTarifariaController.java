@@ -1,7 +1,9 @@
 package com.example.tarifas.controller;
 
+import com.example.tarifas.dto.FaixaConsumoResponseDTO;
 import com.example.tarifas.dto.TabelaTarifariaRequestDTO;
 import com.example.tarifas.dto.TabelaTarifariaResponseDTO;
+import com.example.tarifas.model.Categoria;
 import com.example.tarifas.service.TabelaTarifariaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -40,9 +42,20 @@ public class TabelaTarifariaController {
         return ResponseEntity.ok(tabelasAtivas);
     }
 
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> excluirTabela(@PathVariable Long id) {
         tabelaTarifariaService.excluirTabela(id);
         return ResponseEntity.noContent().build();
     }
+
+
+    @GetMapping("/categoria/{categoria}")
+    public ResponseEntity<List<FaixaConsumoResponseDTO>> listarFaixasPorCategoria(
+            @PathVariable Categoria categoria
+    ) {
+        return ResponseEntity.ok(tabelaTarifariaService.listarFaixasPorCategoria(categoria));
+    }
 }
+

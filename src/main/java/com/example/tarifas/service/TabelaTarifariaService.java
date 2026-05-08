@@ -1,9 +1,7 @@
 package com.example.tarifas.service;
 
-import com.example.tarifas.dto.CategoriaConsumoRequestDTO;
-import com.example.tarifas.dto.FaixaConsumoRequestDTO;
-import com.example.tarifas.dto.TabelaTarifariaRequestDTO;
-import com.example.tarifas.dto.TabelaTarifariaResponseDTO;
+import com.example.tarifas.dto.*;
+import com.example.tarifas.model.Categoria;
 import com.example.tarifas.model.CategoriaConsumo;
 import com.example.tarifas.model.FaixaConsumo;
 import com.example.tarifas.model.TabelaTarifaria;
@@ -40,6 +38,27 @@ public class TabelaTarifariaService {
 
         TabelaTarifaria salva = tabelaTarifariaRepository.save(tabelaTarifaria);
         return TabelaTarifariaResponseDTO.fromModel(salva);
+    }
+    @Transactional(readOnly = true)
+    public List<FaixaConsumoResponseDTO> listarFaixasPorCategoria(Categoria categoria) {
+        List<TabelaTarifaria> tabelasAtivas = tabelaTarifariaRepository.findByAtivoTrue();
+
+        for (TabelaTarifaria tabela : tabelasAtivas) {
+            tabela.getCategorias().size();
+
+            var categoriaEncontrada = tabela.getCategorias().stream()
+                    .filter(ct -> ct.getCategoria().equals(categoria))
+                    .findFirst();
+
+            if (categoriaEncontrada.isPresent()) {
+                return categoriaEncontrada.get().getFaixas().stream()
+                        .sorted(Comparator.comparing(FaixaConsumo::getInicio))
+                        .map(FaixaConsumoResponseDTO::fromModel)
+                        .toList();
+            }
+        }
+
+        throw new RuntimeException("Categoria não encontrada em nenhuma tabela ativa");
     }
 
     @Transactional(readOnly = true)
