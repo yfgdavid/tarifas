@@ -31,17 +31,9 @@ public class CalculoService {
     public CalculoResponseDTO calcular(CalculoRequestDTO request) {
         Categoria categoriaInformada = request.getCategoria();
 
-        List<TabelaTarifaria> tabelasAtivas = tabelaTarifariaRepository.findAll()
-                .stream()
-                .filter(TabelaTarifaria::isAtivo)
-                .toList();
-
-        if (tabelasAtivas.isEmpty()) {
-            throw new RuntimeException("Nenhuma tabela tarifária ativa encontrada");
-        }
-        //entre as tabelas ativas, usa a de vigência mais recente.
-        TabelaTarifaria tabelaAtiva = tabelasAtivas.stream()
-                .max(Comparator.comparing(TabelaTarifaria::getDataVigencia))
+        // entre as tabelas ativas, utiliza-se a de vigência mais recente.
+        TabelaTarifaria tabelaAtiva = tabelaTarifariaRepository
+                .findTopByAtivoTrueOrderByDataVigenciaDesc()
                 .orElseThrow(() -> new RuntimeException("Nenhuma tabela tarifária ativa encontrada"));
 
         CategoriaConsumo categoria = tabelaAtiva.getCategorias()
@@ -59,7 +51,7 @@ public class CalculoService {
         BigDecimal valorTotal = BigDecimal.ZERO;
         int consumoRestante = request.getConsumo();
 
-        //cálculo progressivo: cada faixa cobra apenas a parcela do consumo que cabe nela.
+        //cálculo progressivo; cada faixa cobra apenas a parcela do consumo que se enquadra nela.
         for (FaixaConsumo faixa : faixasOrdenadas) {
             if (consumoRestante <= 0) {
                 break;

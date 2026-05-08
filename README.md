@@ -87,6 +87,31 @@ DB_PASSWORD=sua_senha
 
 A estrutura do banco é gerada automaticamente pelo JPA, o que atende ao requisito de configuração equivalente ao script SQL.
 
+## Modelagem de dados
+
+A aplicação foi modelada com três entidades principais:
+
+- **TabelaTarifaria**: representa uma tabela tarifária completa, contendo nome, data de vigência e status de ativação.
+
+
+- **CategoriaConsumo**: representa uma categoria vinculada a uma tabela tarifária, como COMERCIAL, INDUSTRIAL, PARTICULAR ou PUBLICO.
+
+
+- **FaixaConsumo**: representa uma faixa de consumo com início, fim e valor unitário.
+
+### Relacionamentos
+
+- Uma **TabelaTarifaria** possui várias **CategoriaConsumo**.
+- Uma **CategoriaConsumo** pertence a uma única **TabelaTarifaria**.
+- Uma **CategoriaConsumo** possui várias **FaixaConsumo**.
+- Uma **FaixaConsumo** pertence a uma única **CategoriaConsumo**.
+
+### Estrutura resumida
+
+TabelaTarifaria (1) ---- (N) CategoriaConsumo (1) ---- (N) FaixaConsumo
+
+Essa modelagem permite que as faixas e valores sejam parametrizados no banco de dados, atendendo ao requisito do desafio de alterar regras tarifárias sem modificar o código-fonte.
+
 ## Como executar a aplicação
 
 1. Clone o repositório:

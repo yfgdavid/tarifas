@@ -2,6 +2,7 @@ package com.example.tarifas.dto;
 
 import com.example.tarifas.model.Categoria;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,6 +21,6 @@ public class CategoriaConsumoRequestDTO {
     private Categoria categoria;
 
     @Valid
-    @NotNull(message = "As faixas são obrigatórias")
+    @NotEmpty(message = "As faixas são obrigatórias")
     private List<FaixaConsumoRequestDTO> faixas;
 }

@@ -1,6 +1,7 @@
 package com.example.tarifas.dto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,6 +23,6 @@ public class TabelaTarifariaRequestDTO {
     private LocalDate dataVigencia;
 
     @Valid
-    @NotNull(message = "As categorias são obrigatórias")
+    @NotEmpty(message = "As categorias são obrigatórias")
     private List<CategoriaConsumoRequestDTO> categorias;
 }
