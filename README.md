@@ -195,92 +195,107 @@ ou, dependendo da configuração do Springdoc:
 http://localhost:8080/swagger-ui/index.html
 ```
 
-## Endpoints
+'''# Endpoints
 
-### 1. Criar tabela tarifária
+## 1. Criar tabela tarifária
 
 **POST** `/api/tabelas-tarifarias`
 
-#### Exemplo de request
+### Exemplo de request
 
 ```json
 {
-  "nome": "Tabela Teste",
-  "dataVigencia": "2026-05-08",
+  "nome": "Tabela Tarifaria Completa",
+  "dataVigencia": "2026-05-09",
+  "ativo": true,
   "categorias": [
     {
       "categoria": "COMERCIAL",
       "faixas": [
-        {
-          "inicio": 0,
-          "fim": 10,
-          "valorUnitario": 4.00
-        },
-        {
-          "inicio": 11,
-          "fim": 20,
-          "valorUnitario": 5.50
-        },
-        {
-          "inicio": 21,
-          "fim": 30,
-          "valorUnitario": 7.00
-        },
-        {
-          "inicio": 31,
-          "fim": 99999,
-          "valorUnitario": 8.50
-        }
+        { "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+        { "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
+        { "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
+        { "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
       ]
     },
     {
       "categoria": "INDUSTRIAL",
       "faixas": [
-        {
-          "inicio": 0,
-          "fim": 10,
-          "valorUnitario": 6.00
-        },
-        {
-          "inicio": 11,
-          "fim": 20,
-          "valorUnitario": 8.00
-        },
-        {
-          "inicio": 21,
-          "fim": 30,
-          "valorUnitario": 10.00
-        },
-        {
-          "inicio": 31,
-          "fim": 99999,
-          "valorUnitario": 12.00
-        }
+        { "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+        { "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
+        { "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
+        { "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
+      ]
+    },
+    {
+      "categoria": "PARTICULAR",
+      "faixas": [
+        { "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+        { "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
+        { "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
+        { "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
+      ]
+    },
+    {
+      "categoria": "PUBLICO",
+      "faixas": [
+        { "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+        { "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
+        { "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
+        { "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
       ]
     }
   ]
 }
 ```
 
-#### Exemplo de response
+### Exemplo de response
 
 ```json
 {
   "id": 1,
-  "nome": "Tabela Teste",
-  "dataVigencia": "2026-05-08",
+  "nome": "Tabela Tarifaria Completa",
+  "dataVigencia": "2026-05-09",
   "ativo": true,
   "categorias": [
     {
       "id": 1,
       "categoria": "COMERCIAL",
       "faixas": [
-        {
-          "id": 1,
-          "inicio": 0,
-          "fim": 10,
-          "valorUnitario": 4.00
-        }
+        { "id": 1, "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+        { "id": 2, "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
+        { "id": 3, "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
+        { "id": 4, "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
+      ]
+    },
+    {
+      "id": 2,
+      "categoria": "INDUSTRIAL",
+      "faixas": [
+        { "id": 5, "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+        { "id": 6, "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
+        { "id": 7, "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
+        { "id": 8, "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
+      ]
+    },
+    {
+      "id": 3,
+      "categoria": "PARTICULAR",
+      "faixas": [
+        { "id": 9, "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+        { "id": 10, "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
+        { "id": 11, "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
+        { "id": 12, "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
+      ]
+    },
+    {
+      "id": 4,
+      "categoria": "PUBLICO",
+      "faixas": [
+        { "id": 13, "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+        { "id": 14, "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
+        { "id": 15, "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
+        { "id": 16, "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
       ]
     }
   ]
@@ -289,36 +304,58 @@ http://localhost:8080/swagger-ui/index.html
 
 > Os IDs podem variar conforme os dados persistidos no banco.
 
-### 2. Listar todas as tabelas tarifárias
+## 2. Listar todas as tabelas tarifárias
 
 **GET** `/api/tabelas-tarifarias`
 
-#### Exemplo de response
+### Exemplo de response
 
 ```json
 [
   {
     "id": 1,
-    "nome": "Tabela Teste",
-    "dataVigencia": "2026-05-08",
+    "nome": "Tabela Tarifaria Completa",
+    "dataVigencia": "2026-05-09",
     "ativo": true,
     "categorias": [
       {
         "id": 1,
         "categoria": "COMERCIAL",
         "faixas": [
-          {
-            "id": 10,
-            "inicio": 0,
-            "fim": 10,
-            "valorUnitario": 4.00
-          },
-          {
-            "id": 11,
-            "inicio": 11,
-            "fim": 20,
-            "valorUnitario": 5.50
-          }
+          { "id": 1, "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+          { "id": 2, "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
+          { "id": 3, "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
+          { "id": 4, "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
+        ]
+      },
+      {
+        "id": 2,
+        "categoria": "INDUSTRIAL",
+        "faixas": [
+          { "id": 5, "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+          { "id": 6, "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
+          { "id": 7, "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
+          { "id": 8, "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
+        ]
+      },
+      {
+        "id": 3,
+        "categoria": "PARTICULAR",
+        "faixas": [
+          { "id": 9, "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+          { "id": 10, "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
+          { "id": 11, "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
+          { "id": 12, "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
+        ]
+      },
+      {
+        "id": 4,
+        "categoria": "PUBLICO",
+        "faixas": [
+          { "id": 13, "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+          { "id": 14, "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
+          { "id": 15, "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
+          { "id": 16, "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
         ]
       }
     ]
@@ -326,36 +363,58 @@ http://localhost:8080/swagger-ui/index.html
 ]
 ```
 
-### 3. Listar apenas tabelas ativas
+## 3. Listar apenas tabelas ativas
 
 **GET** `/api/tabelas-tarifarias/ativas`
 
-#### Exemplo de response
+### Exemplo de response
 
 ```json
 [
   {
     "id": 1,
-    "nome": "Tabela Teste",
-    "dataVigencia": "2026-05-08",
+    "nome": "Tabela Tarifaria Completa",
+    "dataVigencia": "2026-05-09",
     "ativo": true,
     "categorias": [
       {
         "id": 1,
         "categoria": "COMERCIAL",
         "faixas": [
-          {
-            "id": 10,
-            "inicio": 0,
-            "fim": 10,
-            "valorUnitario": 4.00
-          },
-          {
-            "id": 11,
-            "inicio": 11,
-            "fim": 20,
-            "valorUnitario": 5.50
-          }
+          { "id": 1, "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+          { "id": 2, "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
+          { "id": 3, "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
+          { "id": 4, "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
+        ]
+      },
+      {
+        "id": 2,
+        "categoria": "INDUSTRIAL",
+        "faixas": [
+          { "id": 5, "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+          { "id": 6, "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
+          { "id": 7, "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
+          { "id": 8, "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
+        ]
+      },
+      {
+        "id": 3,
+        "categoria": "PARTICULAR",
+        "faixas": [
+          { "id": 9, "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+          { "id": 10, "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
+          { "id": 11, "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
+          { "id": 12, "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
+        ]
+      },
+      {
+        "id": 4,
+        "categoria": "PUBLICO",
+        "faixas": [
+          { "id": 13, "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+          { "id": 14, "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
+          { "id": 15, "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
+          { "id": 16, "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
         ]
       }
     ]
@@ -363,26 +422,75 @@ http://localhost:8080/swagger-ui/index.html
 ]
 ```
 
-### 4. Excluir tabela tarifária logicamente
+## 4. Listar tarifas por categoria
+
+**GET** `/api/tabelas-tarifarias/categoria/{categoria}`
+
+### Parâmetro de rota
+
+- `categoria`: `COMERCIAL`, `INDUSTRIAL`, `PARTICULAR` ou `PUBLICO`.
+
+### Exemplo de request
+
+```http
+GET /api/tabelas-tarifarias/categoria/COMERCIAL
+```
+
+### Exemplo de response
+
+```json
+[
+  {
+    "id": 1,
+    "inicio": 0,
+    "fim": 10,
+    "valorUnitario": 4.00
+  },
+  {
+    "id": 2,
+    "inicio": 11,
+    "fim": 20,
+    "valorUnitario": 5.50
+  },
+  {
+    "id": 3,
+    "inicio": 21,
+    "fim": 30,
+    "valorUnitario": 7.00
+  },
+  {
+    "id": 4,
+    "inicio": 31,
+    "fim": 99999,
+    "valorUnitario": 8.50
+  }
+]
+```
+
+### Observação
+
+Esse endpoint retorna as faixas da primeira tabela ativa encontrada para a categoria informada, conforme a regra atual da aplicação.
+
+## 5. Excluir tabela tarifária logicamente
 
 **DELETE** `/api/tabelas-tarifarias/{id}`
 
-#### Exemplo
+### Exemplo de request
 
 ```http
 DELETE /api/tabelas-tarifarias/1
 ```
 
-#### Comportamento esperado
+### Comportamento esperado
 
 A tabela não é removida fisicamente do banco.  
 O campo `ativo` é alterado para `false`, impedindo que essa tabela seja utilizada em cálculos futuros.
 
-### 5. Calcular valor da tarifa
+## 6. Calcular valor da tarifa
 
 **POST** `/api/calculos`
 
-#### Exemplo de request
+### Exemplo de request
 
 ```json
 {
@@ -391,7 +499,7 @@ O campo `ativo` é alterado para `false`, impedindo que essa tabela seja utiliza
 }
 ```
 
-#### Exemplo de response
+### Exemplo de response
 
 ```json
 {
@@ -401,7 +509,7 @@ O campo `ativo` é alterado para `false`, impedindo que essa tabela seja utiliza
   "detalhamento": [
     {
       "faixa": {
-        "id": 10,
+        "id": 1,
         "inicio": 0,
         "fim": 10,
         "valorUnitario": 4.00
@@ -412,7 +520,7 @@ O campo `ativo` é alterado para `false`, impedindo que essa tabela seja utiliza
     },
     {
       "faixa": {
-        "id": 11,
+        "id": 2,
         "inicio": 11,
         "fim": 20,
         "valorUnitario": 5.50
@@ -424,7 +532,6 @@ O campo `ativo` é alterado para `false`, impedindo que essa tabela seja utiliza
   ]
 }
 ```
-
 Nesse exemplo, o cálculo é progressivo:
 - 10 m³ são cobrados na primeira faixa;
 - 8 m³ são cobrados na segunda faixa;
