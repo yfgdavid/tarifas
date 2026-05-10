@@ -31,7 +31,7 @@ O projeto foi desenvolvido para atender ao desafio técnico de uma API capaz de:
 As principais regras implementadas são:
 
 - O sistema suporta as categorias `COMERCIAL`, `INDUSTRIAL`, `PARTICULAR` e `PUBLICO`.
-- As faixas de consumo devem começar em 0.
+- As faixas de consumo devem começar em 1.
 - O início de cada faixa deve ser menor que o fim.
 - Não pode haver sobreposição entre faixas.
 - Não pode haver buracos entre faixas.
@@ -212,7 +212,7 @@ http://localhost:8080/swagger-ui/index.html
     {
       "categoria": "COMERCIAL",
       "faixas": [
-        { "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+        { "inicio": 1, "fim": 10, "valorUnitario": 4.00 },
         { "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
         { "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
         { "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
@@ -221,7 +221,7 @@ http://localhost:8080/swagger-ui/index.html
     {
       "categoria": "INDUSTRIAL",
       "faixas": [
-        { "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+        { "inicio": 1, "fim": 10, "valorUnitario": 6.00 },
         { "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
         { "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
         { "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
@@ -230,7 +230,7 @@ http://localhost:8080/swagger-ui/index.html
     {
       "categoria": "PARTICULAR",
       "faixas": [
-        { "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+        { "inicio": 1, "fim": 10, "valorUnitario": 3.00 },
         { "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
         { "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
         { "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
@@ -239,7 +239,7 @@ http://localhost:8080/swagger-ui/index.html
     {
       "categoria": "PUBLICO",
       "faixas": [
-        { "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+        { "inicio": 1, "fim": 10, "valorUnitario": 2.50 },
         { "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
         { "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
         { "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
@@ -262,7 +262,7 @@ http://localhost:8080/swagger-ui/index.html
       "id": 1,
       "categoria": "COMERCIAL",
       "faixas": [
-        { "id": 1, "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+        { "id": 1, "inicio": 1, "fim": 10, "valorUnitario": 4.00 },
         { "id": 2, "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
         { "id": 3, "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
         { "id": 4, "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
@@ -272,7 +272,7 @@ http://localhost:8080/swagger-ui/index.html
       "id": 2,
       "categoria": "INDUSTRIAL",
       "faixas": [
-        { "id": 5, "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+        { "id": 5, "inicio": 1, "fim": 10, "valorUnitario": 6.00 },
         { "id": 6, "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
         { "id": 7, "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
         { "id": 8, "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
@@ -282,7 +282,7 @@ http://localhost:8080/swagger-ui/index.html
       "id": 3,
       "categoria": "PARTICULAR",
       "faixas": [
-        { "id": 9, "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+        { "id": 9, "inicio": 1, "fim": 10, "valorUnitario": 3.00 },
         { "id": 10, "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
         { "id": 11, "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
         { "id": 12, "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
@@ -292,7 +292,7 @@ http://localhost:8080/swagger-ui/index.html
       "id": 4,
       "categoria": "PUBLICO",
       "faixas": [
-        { "id": 13, "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+        { "id": 13, "inicio": 1, "fim": 10, "valorUnitario": 2.50 },
         { "id": 14, "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
         { "id": 15, "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
         { "id": 16, "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
@@ -322,7 +322,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 1,
         "categoria": "COMERCIAL",
         "faixas": [
-          { "id": 1, "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+          { "id": 1, "inicio": 1, "fim": 10, "valorUnitario": 4.00 },
           { "id": 2, "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
           { "id": 3, "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
           { "id": 4, "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
@@ -332,7 +332,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 2,
         "categoria": "INDUSTRIAL",
         "faixas": [
-          { "id": 5, "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+          { "id": 5, "inicio": 1, "fim": 10, "valorUnitario": 6.00 },
           { "id": 6, "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
           { "id": 7, "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
           { "id": 8, "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
@@ -342,7 +342,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 3,
         "categoria": "PARTICULAR",
         "faixas": [
-          { "id": 9, "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+          { "id": 9, "inicio": 1, "fim": 10, "valorUnitario": 3.00 },
           { "id": 10, "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
           { "id": 11, "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
           { "id": 12, "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
@@ -352,7 +352,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 4,
         "categoria": "PUBLICO",
         "faixas": [
-          { "id": 13, "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+          { "id": 13, "inicio": 1, "fim": 10, "valorUnitario": 2.50 },
           { "id": 14, "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
           { "id": 15, "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
           { "id": 16, "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
@@ -381,7 +381,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 1,
         "categoria": "COMERCIAL",
         "faixas": [
-          { "id": 1, "inicio": 0, "fim": 10, "valorUnitario": 4.00 },
+          { "id": 1, "inicio": 1, "fim": 10, "valorUnitario": 4.00 },
           { "id": 2, "inicio": 11, "fim": 20, "valorUnitario": 5.50 },
           { "id": 3, "inicio": 21, "fim": 30, "valorUnitario": 7.00 },
           { "id": 4, "inicio": 31, "fim": 99999, "valorUnitario": 8.50 }
@@ -391,7 +391,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 2,
         "categoria": "INDUSTRIAL",
         "faixas": [
-          { "id": 5, "inicio": 0, "fim": 10, "valorUnitario": 6.00 },
+          { "id": 5, "inicio": 1, "fim": 10, "valorUnitario": 6.00 },
           { "id": 6, "inicio": 11, "fim": 20, "valorUnitario": 8.00 },
           { "id": 7, "inicio": 21, "fim": 30, "valorUnitario": 10.00 },
           { "id": 8, "inicio": 31, "fim": 99999, "valorUnitario": 12.00 }
@@ -401,7 +401,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 3,
         "categoria": "PARTICULAR",
         "faixas": [
-          { "id": 9, "inicio": 0, "fim": 10, "valorUnitario": 3.00 },
+          { "id": 9, "inicio": 1, "fim": 10, "valorUnitario": 3.00 },
           { "id": 10, "inicio": 11, "fim": 20, "valorUnitario": 4.50 },
           { "id": 11, "inicio": 21, "fim": 30, "valorUnitario": 6.00 },
           { "id": 12, "inicio": 31, "fim": 99999, "valorUnitario": 7.50 }
@@ -411,7 +411,7 @@ http://localhost:8080/swagger-ui/index.html
         "id": 4,
         "categoria": "PUBLICO",
         "faixas": [
-          { "id": 13, "inicio": 0, "fim": 10, "valorUnitario": 2.50 },
+          { "id": 13, "inicio": 1, "fim": 10, "valorUnitario": 2.50 },
           { "id": 14, "inicio": 11, "fim": 20, "valorUnitario": 4.00 },
           { "id": 15, "inicio": 21, "fim": 30, "valorUnitario": 5.50 },
           { "id": 16, "inicio": 31, "fim": 99999, "valorUnitario": 7.00 }
@@ -442,7 +442,7 @@ GET /api/tabelas-tarifarias/categoria/COMERCIAL
 [
   {
     "id": 1,
-    "inicio": 0,
+    "inicio": 1,
     "fim": 10,
     "valorUnitario": 4.00
   },
@@ -510,7 +510,7 @@ O campo `ativo` é alterado para `false`, impedindo que essa tabela seja utiliza
     {
       "faixa": {
         "id": 1,
-        "inicio": 0,
+        "inicio": 1,
         "fim": 10,
         "valorUnitario": 4.00
       },
@@ -583,7 +583,7 @@ Também é recomendado testar cenários de erro:
 - tabela ativa inexistente;
 - faixas sobrepostas;
 - faixas com buracos;
-- faixa que não inicia em 0;
+- faixa que não inicia em 1;
 - campos obrigatórios ausentes.
 
 ## Estrutura do projeto

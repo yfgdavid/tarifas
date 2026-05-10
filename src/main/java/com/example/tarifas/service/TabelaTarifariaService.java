@@ -127,8 +127,8 @@ public class TabelaTarifariaService {
                 .sorted(Comparator.comparingInt(FaixaConsumo::getInicio))
                 .toList();
 
-        if (faixasOrdenadas.get(0).getInicio() != 0) {
-            throw new RuntimeException("As faixas devem iniciar em 0");
+        if (faixasOrdenadas.get(0).getInicio() != 1) {
+            throw new RuntimeException("As faixas devem iniciar em 1");
         }
 
         for (int i = 0; i < faixasOrdenadas.size(); i++) {

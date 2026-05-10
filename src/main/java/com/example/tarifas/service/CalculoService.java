@@ -57,7 +57,7 @@ public class CalculoService {
                 break;
             }
 
-            int capacidadeFaixa = faixa.getFim() - faixa.getInicio();
+            int capacidadeFaixa = faixa.getFim() - faixa.getInicio() + 1;
             int m3Cobrados = Math.min(consumoRestante, capacidadeFaixa);
 
             BigDecimal subtotal = faixa.getValorUnitario()
